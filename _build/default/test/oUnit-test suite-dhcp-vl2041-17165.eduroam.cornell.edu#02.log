@@ -1,0 +1,11 @@
+2025-09-28T17:27:48+00:00 dhcp-vl2041-17165.eduroam.cornell.edu#02 I: Start test test suite:1:Testing [load_candidates] works when given the proper file.
+2025-09-28T17:27:48+00:00 dhcp-vl2041-17165.eduroam.cornell.edu#02 I: Test test suite:1:Testing [load_candidates] works when given the proper file is successful.
+2025-09-28T17:27:48+00:00 dhcp-vl2041-17165.eduroam.cornell.edu#02 I: End test test suite:1:Testing [load_candidates] works when given the proper file.
+2025-09-28T17:27:48+00:00 dhcp-vl2041-17165.eduroam.cornell.edu#02 I: Start test test suite:3:Testing [compute_points] works as intended.
+2025-09-28T17:27:48+00:00 dhcp-vl2041-17165.eduroam.cornell.edu#02 E: Test test suite:3:Testing [compute_points] works as intended exited with an error.
+2025-09-28T17:27:48+00:00 dhcp-vl2041-17165.eduroam.cornell.edu#02 E: Failure("incomplete") in test test suite:3:Testing [compute_points] works as intended.
+2025-09-28T17:27:48+00:00 dhcp-vl2041-17165.eduroam.cornell.edu#02 E: Raised at Stdlib.failwith in file "stdlib.ml", line 29, characters 17-33
+2025-09-28T17:27:48+00:00 dhcp-vl2041-17165.eduroam.cornell.edu#02 E: Called from Dune__exe__Test_a2.tests.(fun) in file "test/test_a2.ml", line 46, characters 24-98
+2025-09-28T17:27:48+00:00 dhcp-vl2041-17165.eduroam.cornell.edu#02 E: Called from OUnitRunner.run_one_test.(fun) in file "src/lib/ounit2/advanced/oUnitRunner.ml", line 83, characters 13-26
+2025-09-28T17:27:48+00:00 dhcp-vl2041-17165.eduroam.cornell.edu#02 E: 
+2025-09-28T17:27:48+00:00 dhcp-vl2041-17165.eduroam.cornell.edu#02 I: End test test suite:3:Testing [compute_points] works as intended.

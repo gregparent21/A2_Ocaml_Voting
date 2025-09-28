@@ -1,0 +1,6 @@
+2025-09-28T17:27:48+00:00 dhcp-vl2041-17165.eduroam.cornell.edu#01 I: Start test test suite:0:a trivial test.
+2025-09-28T17:27:48+00:00 dhcp-vl2041-17165.eduroam.cornell.edu#01 I: Test test suite:0:a trivial test is successful.
+2025-09-28T17:27:48+00:00 dhcp-vl2041-17165.eduroam.cornell.edu#01 I: End test test suite:0:a trivial test.
+2025-09-28T17:27:48+00:00 dhcp-vl2041-17165.eduroam.cornell.edu#01 I: Start test test suite:2:Testing [load_ballots] works when given the proper file.
+2025-09-28T17:27:48+00:00 dhcp-vl2041-17165.eduroam.cornell.edu#01 I: Test test suite:2:Testing [load_ballots] works when given the proper file is successful.
+2025-09-28T17:27:48+00:00 dhcp-vl2041-17165.eduroam.cornell.edu#01 I: End test test suite:2:Testing [load_ballots] works when given the proper file.

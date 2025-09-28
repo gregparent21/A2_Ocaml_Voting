@@ -1,4 +1,4 @@
-# dune build
+# dune test
 # OCAMLPARAM: unset
 # Shared cache: enabled-except-user-rules
 # Shared cache location: /Users/gregoryparent/.cache/dune/db
@@ -14,4 +14,21 @@
 #  ; build_dir = In_build_dir "default"
 #  ; instrument_with = []
 #  }
-$ /Users/gregoryparent/.opam/cs3110-2025fa/bin/ocamlc.opt -config > /var/folders/71/sy_tdbrs2m17j52710sbk8sr0000gn/T/dune_cd69fb_output
+$ /Users/gregoryparent/.opam/cs3110-2025fa/bin/ocamlc.opt -config > /var/folders/71/sy_tdbrs2m17j52710sbk8sr0000gn/T/dune_448cc6_output
+$ (cd _build/default/test && ./test_a2.exe)
+> ...E
+> ==============================================================================
+> Error: test suite:3:Testing [compute_points] works as intended.
+>
+> File "/Users/gregoryparent/Downloads/Cornell/Semester 3/CS3110/a2/a2/_build/default/test/oUnit-test suite-dhcp-vl2041-17165.eduroam.cornell.edu#02.log", line 5, characters 1-1:
+> Error: test suite:3:Testing [compute_points] works as intended (in the log).
+>
+> Raised at Stdlib.failwith in file "stdlib.ml", line 29, characters 17-33
+> Called from Dune__exe__Test_a2.tests.(fun) in file "test/test_a2.ml", line 46, characters 24-98
+> Called from OUnitRunner.run_one_test.(fun) in file "src/lib/ounit2/advanced/oUnitRunner.ml", line 83, characters 13-26
+>
+> Failure("incomplete")
+> ------------------------------------------------------------------------------
+> Ran: 4 tests in: 0.11 seconds.
+> FAILED: Cases: 4 Tried: 4 Errors: 1 Failures: 0 Skip:  0 Todo: 0 Timeouts: 0.
+[1]
