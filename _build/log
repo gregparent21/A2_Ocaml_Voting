@@ -14,21 +14,10 @@
 #  ; build_dir = In_build_dir "default"
 #  ; instrument_with = []
 #  }
-$ /Users/gregoryparent/.opam/cs3110-2025fa/bin/ocamlc.opt -config > /var/folders/71/sy_tdbrs2m17j52710sbk8sr0000gn/T/dune_448cc6_output
+$ /Users/gregoryparent/.opam/cs3110-2025fa/bin/ocamlc.opt -config > /var/folders/71/sy_tdbrs2m17j52710sbk8sr0000gn/T/dune_816491_output
+$ (cd _build/default && /Users/gregoryparent/.opam/cs3110-2025fa/bin/ocamlopt.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -w +a-4-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -g -I test/.test_a2.eobjs/byte -I test/.test_a2.eobjs/native -I /Users/gregoryparent/.opam/cs3110-2025fa/lib/batteries -I /Users/gregoryparent/.opam/cs3110-2025fa/lib/batteries/unthreaded -I /Users/gregoryparent/.opam/cs3110-2025fa/lib/bytes -I /Users/gregoryparent/.opam/cs3110-2025fa/lib/camlp-streams -I /Users/gregoryparent/.opam/cs3110-2025fa/lib/csv -I /Users/gregoryparent/.opam/cs3110-2025fa/lib/num -I /Users/gregoryparent/.opam/cs3110-2025fa/lib/ocaml/str -I /Users/gregoryparent/.opam/cs3110-2025fa/lib/ocaml/threads -I /Users/gregoryparent/.opam/cs3110-2025fa/lib/ocaml/unix -I /Users/gregoryparent/.opam/cs3110-2025fa/lib/ounit2 -I /Users/gregoryparent/.opam/cs3110-2025fa/lib/ounit2/advanced -I /Users/gregoryparent/.opam/cs3110-2025fa/lib/seq -I /Users/gregoryparent/.opam/cs3110-2025fa/lib/stdlib-shims -I lib/.a2.objs/byte -I lib/.a2.objs/native -cmi-file test/.test_a2.eobjs/byte/dune__exe__Test_a2.cmi -no-alias-deps -opaque -o test/.test_a2.eobjs/native/dune__exe__Test_a2.cmx -c -impl test/test_a2.ml)
+$ (cd _build/default && /Users/gregoryparent/.opam/cs3110-2025fa/bin/ocamlopt.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -w +a-4-7-9-27-29-30-32..42-44-45-48-50-60-66..70 -g -o test/test_a2.exe /Users/gregoryparent/.opam/cs3110-2025fa/lib/ocaml/unix/unix.cmxa /Users/gregoryparent/.opam/cs3110-2025fa/lib/stdlib-shims/stdlib_shims.cmxa /Users/gregoryparent/.opam/cs3110-2025fa/lib/ounit2/advanced/oUnitAdvanced.cmxa /Users/gregoryparent/.opam/cs3110-2025fa/lib/ounit2/oUnit.cmxa /Users/gregoryparent/.opam/cs3110-2025fa/lib/csv/csv.cmxa /Users/gregoryparent/.opam/cs3110-2025fa/lib/num/nums.cmxa -I /Users/gregoryparent/.opam/cs3110-2025fa/lib/num -I /Users/gregoryparent/.opam/cs3110-2025fa/lib/num /Users/gregoryparent/.opam/cs3110-2025fa/lib/ocaml/str/str.cmxa /Users/gregoryparent/.opam/cs3110-2025fa/lib/camlp-streams/camlp_streams.cmxa /Users/gregoryparent/.opam/cs3110-2025fa/lib/batteries/unthreaded/batteries_unthreaded.cmxa /Users/gregoryparent/.opam/cs3110-2025fa/lib/ocaml/threads/threads.cmxa /Users/gregoryparent/.opam/cs3110-2025fa/lib/batteries/batteries.cmxa lib/a2.cmxa test/.test_a2.eobjs/native/dune__exe__Test_a2.cmx)
 $ (cd _build/default/test && ./test_a2.exe)
-> ...E
-> ==============================================================================
-> Error: test suite:3:Testing [compute_points] works as intended.
->
-> File "/Users/gregoryparent/Downloads/Cornell/Semester 3/CS3110/a2/a2/_build/default/test/oUnit-test suite-dhcp-vl2041-17165.eduroam.cornell.edu#02.log", line 5, characters 1-1:
-> Error: test suite:3:Testing [compute_points] works as intended (in the log).
->
-> Raised at Stdlib.failwith in file "stdlib.ml", line 29, characters 17-33
-> Called from Dune__exe__Test_a2.tests.(fun) in file "test/test_a2.ml", line 46, characters 24-98
-> Called from OUnitRunner.run_one_test.(fun) in file "src/lib/ounit2/advanced/oUnitRunner.ml", line 83, characters 13-26
->
-> Failure("incomplete")
-> ------------------------------------------------------------------------------
-> Ran: 4 tests in: 0.11 seconds.
-> FAILED: Cases: 4 Tried: 4 Errors: 1 Failures: 0 Skip:  0 Todo: 0 Timeouts: 0.
-[1]
+> .......
+> Ran: 7 tests in: 0.11 seconds.
+> OK
