@@ -8,6 +8,19 @@ let rec print_list = function
       Printf.printf "Key: %s, Value: %d\n" k v;
       print_list t
 
+(**[sort_tally tally_lst] sorts [tally_lst] first by the candidate name, then by
+   points in the case of the same candidate name *)
+let sort_tally tally_lst =
+  List.sort
+    (fun (c1, p1) (c2, p2) ->
+      match String.compare c1 c2 with
+      | 0 -> Int.compare p1 p2
+      | k -> k)
+    tally_lst
+
+(**[cmp_tally a b] is true if [a] and [b] are equal once sorted *)
+let cmp_tally a b = sort_tally a = sort_tally b
+
 let big_ice_cream_expected =
   [
     [ "Vanilla"; "Chocolate"; "Strawberry" ];
@@ -35,7 +48,6 @@ let big_ice_cream_expected =
 let tests =
   "test suite"
   >::: [
-         ("a trivial test" >:: fun _ -> assert_equal 0 0);
          ( "Testing [load_candidates] works when given the proper file"
          >:: fun _ ->
            let expected = [ "Chocolate"; "Strawberry"; "Vanilla" ] in
@@ -73,27 +85,53 @@ let tests =
          ( "Testing [winners] works as intended when there is only 1 winner"
          >:: fun _ ->
            let expected_winner = [ "Vanilla" ] in
-           let final_points =
-             tally
-               (load_candidates "../data/ice_cream_candidates.csv")
-               (load_ballots "../data/ice_cream_ballots.csv")
+           let candidates =
+             load_candidates "../data/ice_cream_candidates.csv"
            in
-           let winners = winners final_points in
+           let ballots = load_ballots "../data/ice_cream_ballots.csv" in
+           let winners = winners candidates ballots in
            assert_bool "Winner is determined as expected"
              (winners = expected_winner) );
          ( "Testing [winners] works as intended when there is a tie winner"
          >:: fun _ ->
-           let expected_winners = [ "Vanilla";"Chocolate" ] in
-           let final_points =
-             tally
+           let expected_winners = [ "Vanilla"; "Chocolate" ] in
+           let winners =
+             winners
                (load_candidates "../data/ice_cream_candidates.csv")
                (load_ballots "../data/tied_ballot.csv")
            in
-           let winners = winners final_points in
            assert_bool "Winner is determined as expected"
              (winners = expected_winners) );
+         ( "Testing [winners] works as intended for a larger data set of 5 \
+            candidates"
+         >:: fun _ ->
+           let expected_winners = [ "Breaking Bad" ] in
+           let winners =
+             winners
+               (load_candidates "../data/tv_show_candidates.csv")
+               (load_ballots "../data/tv_show_ballots.csv")
+           in
+           assert_bool "Winner is determined as expected for larger data set"
+             (winners = expected_winners) );
+         ( "Testing [tally] works as intended for a larger data set of 5 \
+            candidates"
+         >:: fun _ ->
+           let expected_tally =
+             [
+               ("The Wire", 61);
+               ("Dexter", 66);
+               ("The Sopranos", 67);
+               ("Breaking Bad", 137);
+               ("Game of Thrones", 69);
+             ]
+           in
+           let final_points =
+             tally
+               (load_candidates "../data/tv_show_candidates.csv")
+               (load_ballots "../data/tv_show_ballots.csv")
+           in
+         assert_bool "Final tally is determined as expected for a larger
+            dataset" (cmp_tally final_points expected_tally )); 
        ]
 
-(*TODO: make a method that compares 2 association lists without mattering about
-  order *)
 let _ = run_test_tt_main tests

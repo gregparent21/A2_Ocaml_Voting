@@ -1,9 +1,0 @@
-2025-09-29T19:59:09+00:00 dhcp-vl2041-17165.eduroam.cornell.edu#02 I: Start test test suite:1:Testing [load_candidates] works when given the proper file.
-2025-09-29T19:59:09+00:00 dhcp-vl2041-17165.eduroam.cornell.edu#02 I: Test test suite:1:Testing [load_candidates] works when given the proper file is successful.
-2025-09-29T19:59:09+00:00 dhcp-vl2041-17165.eduroam.cornell.edu#02 I: End test test suite:1:Testing [load_candidates] works when given the proper file.
-2025-09-29T19:59:09+00:00 dhcp-vl2041-17165.eduroam.cornell.edu#02 I: Start test test suite:3:Testing [compute_points] works as intended.
-2025-09-29T19:59:09+00:00 dhcp-vl2041-17165.eduroam.cornell.edu#02 I: Test test suite:3:Testing [compute_points] works as intended is successful.
-2025-09-29T19:59:09+00:00 dhcp-vl2041-17165.eduroam.cornell.edu#02 I: End test test suite:3:Testing [compute_points] works as intended.
-2025-09-29T19:59:09+00:00 dhcp-vl2041-17165.eduroam.cornell.edu#02 I: Start test test suite:5:Testing [winners] works as intended when there is only 1 winner.
-2025-09-29T19:59:09+00:00 dhcp-vl2041-17165.eduroam.cornell.edu#02 I: Test test suite:5:Testing [winners] works as intended when there is only 1 winner is successful.
-2025-09-29T19:59:09+00:00 dhcp-vl2041-17165.eduroam.cornell.edu#02 I: End test test suite:5:Testing [winners] works as intended when there is only 1 winner.

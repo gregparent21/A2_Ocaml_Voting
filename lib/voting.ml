@@ -30,7 +30,7 @@ let load_candidates file =
 let load_ballots file = Csv.load file
 
 (**[compute_points candidates ballot] is an association list of each candidate’s
-   Borda points from one singular voter's ballot. *)
+   Borda points assigned from one singular voter's ballot. *)
 let compute_points candidates ballot : tally =
   let n = List.length candidates in
   let indicies = List.mapi (fun i c -> (c, i)) ballot in
@@ -68,12 +68,12 @@ let tally candidates ballots =
   let computed = compute_points candidates in
   List.fold_left combine_tallies start_values (List.map computed ballots)
 
-(** [winners tallies] is all candidates tied for max points. First we find the
-    max_points scored by using [List.fold_left] and then use [List.filter] to
-    add all elements with the winning score to an accumulator. Then we use
-    [List.map fst filter] to get the first element of each tuple, which is the
-    name of the candidate *)
-let winners tallies =
+(** [compute_winners tallies] is all candidates tied for max points. First we
+    find the max_points scored by using [List.fold_left] and then use
+    [List.filter] to add all elements with the winning score to an accumulator.
+    Then we use [List.map fst filter] to get the first element of each tuple,
+    which is the name of the candidate *)
+let compute_winners tallies =
   match tallies with
   | [] -> []
   | _ ->
@@ -82,3 +82,10 @@ let winners tallies =
       in
       let filter = List.filter (fun (_, p) -> p = max_points) tallies in
       List.map fst filter
+
+(**[winners candidates ballots] is the list of final winners. It finds this by
+   finding the final tally by calling [tally] and passes the values to
+   [compute_winners] *)
+let winners candidates ballots =
+  let final_tally = tally candidates ballots in
+  compute_winners final_tally
