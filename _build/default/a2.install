@@ -6,3 +6,6 @@ lib: [
 bin: [
   "_build/install/default/bin/a2"
 ]
+doc: [
+  "_build/install/default/doc/a2/README.md"
+]

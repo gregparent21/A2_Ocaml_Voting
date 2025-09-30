@@ -21,6 +21,10 @@ let sort_tally tally_lst =
 (**[cmp_tally a b] is true if [a] and [b] are equal once sorted *)
 let cmp_tally a b = sort_tally a = sort_tally b
 
+(**[cmp_winners a b] is true if a and b have the same elements, ignoring order
+*)
+let cmp_winners a b = List.sort String.compare a = List.sort String.compare b
+
 let big_ice_cream_expected =
   [
     [ "Vanilla"; "Chocolate"; "Strawberry" ];
@@ -69,7 +73,7 @@ let tests =
                ballot
            in
            assert_bool "Borda points were awarded as expected"
-             (tallies = expected) );
+             (cmp_tally tallies expected) );
          ( "Testing [tally] works as intended when given the ice cream test case"
          >:: fun _ ->
            let expected =
@@ -81,7 +85,7 @@ let tests =
                (load_ballots "../data/ice_cream_ballots.csv")
            in
            assert_bool "Borda points were awarded as expected"
-             (final_points = expected) );
+             (cmp_tally final_points expected) );
          ( "Testing [winners] works as intended when there is only 1 winner"
          >:: fun _ ->
            let expected_winner = [ "Vanilla" ] in
@@ -89,30 +93,30 @@ let tests =
              load_candidates "../data/ice_cream_candidates.csv"
            in
            let ballots = load_ballots "../data/ice_cream_ballots.csv" in
-           let winners = winners candidates ballots in
+           let winner_results = winners candidates ballots in
            assert_bool "Winner is determined as expected"
-             (winners = expected_winner) );
+             (cmp_winners winner_results expected_winner) );
          ( "Testing [winners] works as intended when there is a tie winner"
          >:: fun _ ->
            let expected_winners = [ "Vanilla"; "Chocolate" ] in
-           let winners =
+           let winner_results =
              winners
                (load_candidates "../data/ice_cream_candidates.csv")
                (load_ballots "../data/tied_ballot.csv")
            in
            assert_bool "Winner is determined as expected"
-             (winners = expected_winners) );
+             (cmp_winners winner_results expected_winners) );
          ( "Testing [winners] works as intended for a larger data set of 5 \
             candidates"
          >:: fun _ ->
            let expected_winners = [ "Breaking Bad" ] in
-           let winners =
+           let winner_results =
              winners
                (load_candidates "../data/tv_show_candidates.csv")
                (load_ballots "../data/tv_show_ballots.csv")
            in
            assert_bool "Winner is determined as expected for larger data set"
-             (winners = expected_winners) );
+             (cmp_winners winner_results expected_winners) );
          ( "Testing [tally] works as intended for a larger data set of 5 \
             candidates"
          >:: fun _ ->
@@ -130,8 +134,10 @@ let tests =
                (load_candidates "../data/tv_show_candidates.csv")
                (load_ballots "../data/tv_show_ballots.csv")
            in
-         assert_bool "Final tally is determined as expected for a larger
-            dataset" (cmp_tally final_points expected_tally )); 
+           assert_bool
+             "Final tally is determined as expected for a larger\n\
+             \            dataset"
+             (cmp_tally final_points expected_tally) );
        ]
 
 let _ = run_test_tt_main tests

@@ -9,6 +9,10 @@ type tally = (candidate * int) list
 (**[tally] is a type synonym of an [(candidate * int)] association list,
    connecting a candidate key with a value of their total points *)
 
+(* I used these type synonyms to define return types for the methods before
+   fully developing the methods. This prevented compile time errors in my test
+   cases *)
+
 (**[lookup key] returns the value associated with [key] in an association list.
    if key is not in the list, then it returns None*)
 let rec lookup key lst =
@@ -26,18 +30,41 @@ let load_candidates file =
       | _ -> failwith "Invalid candidate file. More than one entry per row")
     rows
 
-(**[load_ballots file] is the String String List loaded from [file] *)
-let load_ballots file = Csv.load file
+(**[check_rows row length] checks that all rows in [table] are of length
+   [length] *)
+let rec check_rows table length =
+  match table with
+  | [] -> ()
+  | h :: t ->
+      if List.length h <> length then
+        failwith
+          "Error: Not correct amount of candidates ranked in each CSV row"
+      else check_rows t length
+
+(**[load_ballots file] is the String String List loaded from [file]. Fails if
+   the file is empty or if not every row has all the candidates ranked. Checks
+   this by calling [check_rows row length] *)
+let load_ballots file =
+  let rows = Csv.load file in
+  match rows with
+  | [] -> failwith "Error: Ballot file is empty"
+  | h :: t ->
+      let length = List.length h in
+      check_rows t length;
+      rows
 
 (**[compute_points candidates ballot] is an association list of each candidate’s
    Borda points assigned from one singular voter's ballot. *)
-let compute_points candidates ballot : tally =
+let compute_points candidates ballot =
   let n = List.length candidates in
   let indicies = List.mapi (fun i c -> (c, i)) ballot in
   List.map
     (fun c ->
       match lookup c indicies with
-      | None -> (c, 0)
+      | None ->
+          failwith
+            "Invalid ballot. Each candidate in candidates should be in the \
+             ballot"
       | Some i -> (c, n - 1 - i))
     candidates
 
@@ -52,7 +79,6 @@ let combine_tallies combined tallies =
       | Some v -> v
       | None -> 0
     in
-    (*TODO : add GenAI usage for List.remove_assoc *)
     (c, prev + p) :: List.remove_assoc c current
   in
   List.fold_left add combined tallies
